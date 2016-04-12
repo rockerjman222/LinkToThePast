@@ -25,6 +25,7 @@ public class Lttp {
 		});
 
 		Resources.init();
+		//Font.registerFonts();
 
 	}
 

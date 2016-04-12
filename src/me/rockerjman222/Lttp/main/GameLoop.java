@@ -1,6 +1,7 @@
 package me.rockerjman222.Lttp.main;
 
 import me.rockerjman222.Lttp.assets.Resources;
+import me.rockerjman222.Lttp.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,9 @@ public class GameLoop extends JPanel implements Runnable, KeyListener {
 	private long targetTime = 1000 / fps;
 
 	private BufferedImage image;
-	private Graphics graphics;
+	private Graphics2D graphics;
+
+	private StateManager stateManager;
 
 	public GameLoop() {
 		super();
@@ -39,8 +42,9 @@ public class GameLoop extends JPanel implements Runnable, KeyListener {
 
 	public void init() {
 		this.image = new BufferedImage(Lttp.width, Lttp.height, BufferedImage.TYPE_INT_RGB);
-		this.graphics = this.image.getGraphics();
+		this.graphics = (Graphics2D) this.image.getGraphics();
 		this.running = true;
+		this.stateManager = new StateManager();
 	}
 
 	@Override
@@ -71,13 +75,11 @@ public class GameLoop extends JPanel implements Runnable, KeyListener {
 	}
 
 	private void update() {
-
+		this.stateManager.update();
 	}
 
 	private void draw() {
-		graphics.drawImage(Resources.windowIcon, 10, 10, 256, 256, null);
-		graphics.setFont(new Font("Return of Ganon", Font.PLAIN, 75));
-		graphics.drawString("Test", 300, 300);
+		this.stateManager.draw(this.graphics);
 	}
 
 	private void drawToScreen() {
@@ -93,11 +95,11 @@ public class GameLoop extends JPanel implements Runnable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
+		this.stateManager.keyPressed(e.getKeyCode());
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
+		this.stateManager.keyReleased(e.getKeyCode());
 	}
 }

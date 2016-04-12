@@ -3,6 +3,7 @@ package me.rockerjman222.Lttp.assets;
 import me.rockerjman222.Lttp.main.Lttp;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +18,20 @@ public class Resources {
 	/** Window **/
 	public static final BufferedImage windowIcon = loadImage("/window/icon.png");
 
+	/**
+	 * Fonts
+	 **/
+	public static final File returnOfGanonFontFile = loadFile("/fonts/ReturnofGanon.ttf");
+	public static Font defaultFont = null;
+
+	/**
+	 * Title
+	 **/
+	public static final BufferedImage nintendo = loadImage("/titleScreen/nintendo.png");
+	public static final BufferedImage copyright = loadImage("/titleScreen/copyright.png");
+	public static final BufferedImage triforce = loadImage("/titleScreen/triforce.png");
+	public static final BufferedImage triforceSprites = loadImage("/titleScreen/triforceSprites.png");
+
 	/** Maps **/
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
 
@@ -26,7 +41,10 @@ public class Resources {
 
 	/** Sprites **/
 
-	/** Music **/
+	/**
+	 * Music
+	 **/
+	public static final File title = loadFile("/audio/music/Title.wav");
 
 	/** Items **/
 	public static final File arrowHit = loadFile("/audio/sfx/items/Arrow_Hit.wav");
@@ -102,6 +120,14 @@ public class Resources {
 	public static final File textLetter = loadFile("/audio/sfx/menus/Text_Letter.wav");
 
 	public static void init() {
+		/** Font **/
+		try {
+			defaultFont = Font.createFont(Font.TRUETYPE_FONT, returnOfGanonFontFile);
+			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(defaultFont);
+		} catch (FontFormatException | IOException e) {
+			e.printStackTrace();
+		}
+
 		sfx = new HashMap<>();
 		sfx.put(textLetter, new Audio(textLetter));
 		sfx.put(textDone, new Audio(textDone));

@@ -1,1 +1,31 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Directories
+/.gradle/
+/gradle/
+/build/
+/eclipse
+/*.txt
+/run/
+/out/
+/asm/
+/bin/
+/config/
+crash-reports/
+/.idea/
+/.metadata/
+/.settings/
+/libs/
+/saves/
+/resourcepacks/
+/logs/
+/mods/
+/screenshots/
+
+# File Extensions
+*.psd
+*.iml
+*.ipr
+*.iws
+*.lock
+*.zip
+*.classpath
+*.project
