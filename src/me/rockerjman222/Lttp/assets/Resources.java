@@ -21,7 +21,7 @@ public class Resources {
 	/**
 	 * Fonts
 	 **/
-	public static final File returnOfGanonFontFile = loadFile("/fonts/ReturnofGanon.ttf");
+	//public static final File returnOfGanonFontFile = loadFile("/fonts/ReturnofGanon.ttf");
 	public static Font defaultFont = null;
 
 	/** Title **/
@@ -33,6 +33,9 @@ public class Resources {
 	public static final BufferedImage titleNoSword = loadImage("/titleScreen/title_no_sword.png");
 	public static final BufferedImage logo = loadImage("/titleScreen/title.png");
 	public static final BufferedImage sword = loadImage("/titleScreen/sword.png");
+
+	/** Intro **/
+	public static final BufferedImage introSlides = loadImage("/intro/intro_slides.png");
 
 	/** Maps **/
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
@@ -121,12 +124,12 @@ public class Resources {
 
 	public static void init() {
 		/** Font **/
-		try {
-			defaultFont = Font.createFont(Font.TRUETYPE_FONT, returnOfGanonFontFile);
-			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(defaultFont);
-		} catch (FontFormatException | IOException e) {
-			e.printStackTrace();
-		}
+		//try {
+			defaultFont = Font.getFont("Arial") ;//Font.createFont(Font.TRUETYPE_FONT, returnOfGanonFontFile);
+		//	GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(defaultFont);
+		//} catch (FontFormatException | IOException e) {
+		//	e.printStackTrace();
+		//}
 
 		sfx = new HashMap<>();
 		sfx.put(textLetter, new Audio(textLetter));

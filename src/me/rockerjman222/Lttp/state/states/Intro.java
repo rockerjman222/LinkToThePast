@@ -1,8 +1,8 @@
 package me.rockerjman222.Lttp.state.states;
 
+import me.rockerjman222.Lttp.assets.EnumSprites;
 import me.rockerjman222.Lttp.assets.Resources;
 import me.rockerjman222.Lttp.main.Lttp;
-import me.rockerjman222.Lttp.state.EnumStates;
 import me.rockerjman222.Lttp.state.State;
 import me.rockerjman222.Lttp.state.StateManager;
 
@@ -29,15 +29,19 @@ public class Intro extends State {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.setFont(Resources.defaultFont.deriveFont(Font.PLAIN, 72));
-		g.setStroke(new BasicStroke(2));
-		g.drawString("TITLE", Lttp.width / 2 - g.getFontMetrics().stringWidth("title") / 2, 100);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, Lttp.width, Lttp.height);
+		g.drawImage(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_ONE.getX(), EnumSprites.INTRO_SLIDE_ONE.getY(), EnumSprites.INTRO_SLIDE_ONE.getWidth(), EnumSprites.INTRO_SLIDE_ONE.getHeight()),
+				Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale / 2),
+				Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2),
+				EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale,
+				EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale,
+				null
+		);
 	}
 
 	@Override
 	public void keyPressed(int k) {
-		//if(k == 32)
-		//stateManager.setState(EnumStates.TITLE.getState());
 	}
 
 	@Override

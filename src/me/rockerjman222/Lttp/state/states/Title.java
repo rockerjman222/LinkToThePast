@@ -4,11 +4,13 @@ import me.rockerjman222.Lttp.assets.Animator;
 import me.rockerjman222.Lttp.assets.Audio;
 import me.rockerjman222.Lttp.assets.Resources;
 import me.rockerjman222.Lttp.main.Lttp;
+import me.rockerjman222.Lttp.state.EnumStates;
 import me.rockerjman222.Lttp.state.State;
 import me.rockerjman222.Lttp.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class Title extends State {
 	private boolean shouldDrawBackground = false;
 	private boolean shouldDrawTitle = false;
 	private boolean shouldDrawSword = false;
+	private boolean allowInput = false;
 
 	public Title(StateManager stateManager) {
 		this.stateManager = stateManager;
@@ -91,6 +94,10 @@ public class Title extends State {
 			shouldDrawSword = true;
 		}
 
+		if(count == 200) {
+			allowInput = true;
+		}
+
 	}
 
 	@Override
@@ -114,13 +121,13 @@ public class Title extends State {
 		}
 
 		if (shouldDrawTitle) {
-			g.drawImage(Resources.titleNoSword, Lttp.width / 2 - (174 * Lttp.scale / 2), Lttp.height / 2 - (84 * Lttp.scale / 2), 174 * Lttp.scale, 84 * Lttp.scale, null);
+			g.drawImage(Resources.logo, Lttp.width / 2 - (174 * Lttp.scale / 2), Lttp.height / 2 - (128 * Lttp.scale / 2), 174 * Lttp.scale, 128 * Lttp.scale, null);
 		}
 
 		if (shouldDrawSword) {
 			int swordY;
 			for (swordY = -128; swordY < Lttp.height / 2; swordY++) {
-				g.drawImage(Resources.sword, Lttp.width / 4, swordY, 31 * Lttp.scale, 128 * Lttp.scale, null);
+				//g.drawImage(Resources.sword, Lttp.width / 4, swordY, 31 * Lttp.scale, 128 * Lttp.scale, null);
 				if (swordY == Lttp.height / 4)
 					break;
 			}
@@ -130,7 +137,13 @@ public class Title extends State {
 
 	@Override
 	public void keyPressed(int k) {
-
+		if(allowInput) {
+			switch (k) {
+				case KeyEvent.VK_SPACE:
+					this.stateManager.setState(EnumStates.INTRO.getState());
+					break;
+			}
+		}
 	}
 
 	@Override
