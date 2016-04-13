@@ -9,8 +9,6 @@ import me.rockerjman222.Lttp.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -32,6 +30,9 @@ public class Title extends State {
 	private boolean shouldDrawCopyright = false;
 	private boolean shouldStartTriforceAnimation = false;
 	private boolean shouldDrawFinalTriforce = false;
+	private boolean shouldDrawBackground = false;
+	private boolean shouldDrawTitle = false;
+	private boolean shouldDrawSword = false;
 
 	public Title(StateManager stateManager) {
 		this.stateManager = stateManager;
@@ -53,8 +54,7 @@ public class Title extends State {
 			triforceSprites.add(image);
 		}
 
-		triforceAnimation = new Animator(//TODO:FIX THIS
-				// );
+		//triforceAnimation = new Animator();
 	}
 
 	@Override
@@ -79,6 +79,18 @@ public class Title extends State {
 			shouldDrawFinalTriforce = true;
 		}
 
+		if (count == 130) {
+			shouldDrawBackground = true;
+		}
+
+		if (count == 140) {
+			shouldDrawTitle = true;
+		}
+
+		if (count == 145) {
+			shouldDrawSword = true;
+		}
+
 	}
 
 	@Override
@@ -94,6 +106,24 @@ public class Title extends State {
 
 		if (shouldDrawFinalTriforce) {
 			g.drawImage(Resources.triforce, Lttp.width / 2 - (82 * Lttp.scale / 2), Lttp.height / 2 - (81 * Lttp.scale / 2), 82 * Lttp.scale, 81 * Lttp.scale, null);
+		}
+
+		if (shouldDrawBackground) {
+			g.drawImage(Resources.background, Lttp.width / 2 - (256 * Lttp.scale / 2), Lttp.height / 2 - (144 * Lttp.scale / 2), 256 * Lttp.scale, 144 * Lttp.scale, null);
+			g.drawImage(Resources.triforce, Lttp.width / 2 - (82 * Lttp.scale / 2), Lttp.height / 2 - (81 * Lttp.scale / 2), 82 * Lttp.scale, 81 * Lttp.scale, null);
+		}
+
+		if (shouldDrawTitle) {
+			g.drawImage(Resources.titleNoSword, Lttp.width / 2 - (174 * Lttp.scale / 2), Lttp.height / 2 - (84 * Lttp.scale / 2), 174 * Lttp.scale, 84 * Lttp.scale, null);
+		}
+
+		if (shouldDrawSword) {
+			int swordY;
+			for (swordY = -128; swordY < Lttp.height / 2; swordY++) {
+				g.drawImage(Resources.sword, Lttp.width / 4, swordY, 31 * Lttp.scale, 128 * Lttp.scale, null);
+				if (swordY == Lttp.height / 4)
+					break;
+			}
 		}
 
 	}

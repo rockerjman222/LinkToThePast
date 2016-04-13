@@ -24,13 +24,15 @@ public class Resources {
 	public static final File returnOfGanonFontFile = loadFile("/fonts/ReturnofGanon.ttf");
 	public static Font defaultFont = null;
 
-	/**
-	 * Title
-	 **/
+	/** Title **/
 	public static final BufferedImage nintendo = loadImage("/titleScreen/nintendo.png");
 	public static final BufferedImage copyright = loadImage("/titleScreen/copyright.png");
 	public static final BufferedImage triforce = loadImage("/titleScreen/triforce.png");
 	public static final BufferedImage triforceSprites = loadImage("/titleScreen/triforceSprites.png");
+	public static final BufferedImage background = loadImage("/titleScreen/background.png");
+	public static final BufferedImage titleNoSword = loadImage("/titleScreen/title_no_sword.png");
+	public static final BufferedImage logo = loadImage("/titleScreen/title.png");
+	public static final BufferedImage sword = loadImage("/titleScreen/sword.png");
 
 	/** Maps **/
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
@@ -41,9 +43,7 @@ public class Resources {
 
 	/** Sprites **/
 
-	/**
-	 * Music
-	 **/
+	/** Music **/
 	public static final File title = loadFile("/audio/music/Title.wav");
 
 	/** Items **/
