@@ -19,7 +19,8 @@ public class Intro extends State {
 
 	@Override
 	public void init() {
-
+		Resources.init();
+		Resources.music.get(Resources.opening).play();
 	}
 
 	@Override
@@ -31,6 +32,11 @@ public class Intro extends State {
 	public void draw(Graphics2D g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
+
+
+
+
+
 		g.drawImage(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_ONE.getX(), EnumSprites.INTRO_SLIDE_ONE.getY(), EnumSprites.INTRO_SLIDE_ONE.getWidth(), EnumSprites.INTRO_SLIDE_ONE.getHeight()),
 				Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale / 2),
 				Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2),

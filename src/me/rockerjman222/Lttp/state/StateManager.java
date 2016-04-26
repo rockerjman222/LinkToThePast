@@ -1,6 +1,7 @@
 package me.rockerjman222.Lttp.state;
 
-import me.rockerjman222.Lttp.state.states.*;
+import me.rockerjman222.Lttp.state.states.Intro;
+import me.rockerjman222.Lttp.state.states.Title;
 
 import java.awt.*;
 
@@ -12,7 +13,7 @@ public class StateManager {
 
 	public StateManager() {
 		this.states = new State[EnumStates.TOTAL_STATES.getState()];
-		this.currentState = EnumStates.TITLE.getState();
+		this.currentState = EnumStates.INTRO.getState();
 		loadState(this.currentState);
 	}
 
