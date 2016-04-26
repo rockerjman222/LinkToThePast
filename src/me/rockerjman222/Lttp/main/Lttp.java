@@ -17,7 +17,7 @@ public class Lttp {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			frame.setContentPane(new GameLoop());
 			frame.setIconImage(Resources.windowIcon);
-			frame.setPreferredSize(new Dimension(width, height));
+			frame.setSize(new Dimension(width, height));
 			frame.setBackground(Color.BLACK);
 			frame.setResizable(false);
 			frame.pack();
