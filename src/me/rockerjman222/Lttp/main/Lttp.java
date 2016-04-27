@@ -24,7 +24,6 @@ public class Lttp {
 			frame.setVisible(true);
 		});
 
-		Resources.init();
 		//Font.registerFonts();
 
 	}
