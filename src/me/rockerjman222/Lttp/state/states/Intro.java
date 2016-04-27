@@ -2,6 +2,7 @@ package me.rockerjman222.Lttp.state.states;
 
 import me.rockerjman222.Lttp.assets.EnumSprites;
 import me.rockerjman222.Lttp.assets.Resources;
+import me.rockerjman222.Lttp.assets.management.ResourceSchedule;
 import me.rockerjman222.Lttp.main.Lttp;
 import me.rockerjman222.Lttp.state.State;
 import me.rockerjman222.Lttp.state.StateManager;
@@ -19,12 +20,14 @@ public class Intro extends State {
 
 	@Override
 	public void init() {
-		Resources.init();
-		Resources.music.get(Resources.opening).play();
+		super.init();
+		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(1, Resources.music.get(Resources.opening), -1));
 	}
 
 	@Override
 	public void update() {
+
+		this.stateManager.scheduler.updateResources(count);
 
 	}
 
@@ -33,8 +36,7 @@ public class Intro extends State {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
 
-
-
+		this.stateManager.scheduler.drawResources(g);
 
 
 		g.drawImage(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_ONE.getX(), EnumSprites.INTRO_SLIDE_ONE.getY(), EnumSprites.INTRO_SLIDE_ONE.getWidth(), EnumSprites.INTRO_SLIDE_ONE.getHeight()),

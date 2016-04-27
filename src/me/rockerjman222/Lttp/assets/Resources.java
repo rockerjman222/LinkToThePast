@@ -13,6 +13,8 @@ import java.util.HashMap;
 @SuppressWarnings("ALL")
 public class Resources {
 
+	protected Resources(){}
+
 	/** Storage **/
 	public static HashMap<File, Audio> sfx;
 	public static HashMap<File, Audio> music;
@@ -157,7 +159,7 @@ public class Resources {
 	public static final File textDone = loadFile("/audio/sfx/menus/Text_Done.wav");
 	public static final File textLetter = loadFile("/audio/sfx/menus/Text_Letter.wav");
 
-	public static void init() {
+	static {
 		sfx = new HashMap<>();
 		music = new HashMap<>();
 		link = new HashMap<>();

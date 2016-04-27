@@ -1,5 +1,6 @@
 package me.rockerjman222.Lttp.state;
 
+import me.rockerjman222.Lttp.assets.management.AnimationScheduler;
 import me.rockerjman222.Lttp.state.states.Intro;
 import me.rockerjman222.Lttp.state.states.Title;
 
@@ -10,6 +11,7 @@ public class StateManager {
 	public State[] states;
 
 	private int currentState;
+	public AnimationScheduler scheduler = new AnimationScheduler();
 
 	public StateManager() {
 		this.states = new State[EnumStates.TOTAL_STATES.getState()];
@@ -18,6 +20,7 @@ public class StateManager {
 	}
 
 	private void loadState(int state) {
+		this.scheduler.getScheduleList().clear();
 		if (state == EnumStates.TITLE.getState())
 			this.states[state] = new Title(this);
 		else if (state == EnumStates.INTRO.getState())

@@ -101,4 +101,8 @@ public class Animation {
 	public boolean hasPlayedOnce() {
 		return this.hasPlayedOnce;
 	}
+
+	public boolean hasStarted(){
+		return this.running;
+	}
 }

@@ -1,14 +1,23 @@
 package me.rockerjman222.Lttp.state;
 
+import javax.swing.*;
 import java.awt.*;
 
 public abstract class State {
+
+	protected Timer timer;
+	protected int count = 0;
 
 	protected StateManager stateManager;
 
 	private State state;
 
-	public abstract void init();
+	public void init(){
+
+		this.timer = new Timer(100, e -> this.count++);
+		this.timer.start();
+
+	}
 
 	public abstract void update();
 
