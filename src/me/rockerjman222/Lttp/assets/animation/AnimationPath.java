@@ -79,4 +79,8 @@ public class AnimationPath {
 	public BufferedImage getSprite(){
 		return this.getAnimation().getSprite();
 	}
+
+	public BufferedImage getSprite(int index) {
+		return this.getAnimation().getSprite(index);
+	}
 }

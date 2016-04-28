@@ -79,6 +79,10 @@ public class Animation {
 		return this.frames.get(this.currentFrame).getFrame();
 	}
 
+	public BufferedImage getSprite(int index) {
+		return this.frames.get(index).getFrame();
+	}
+
 	public void update() {
 		if(this.running) {
 			this.frameCount++;

@@ -47,22 +47,21 @@ public class Title extends State {
 			this.triforceSprites[x] = image[x];
 		}
 
-		this.triOne = new Animation(this.triforceSprites, 3);
-		this.triTwo = new Animation(this.triforceSprites, 3);
-		this.triThree = new Animation(this.triforceSprites, 3);
+		this.triOne = new Animation(this.triforceSprites, 5);
+		this.triTwo = new Animation(this.triforceSprites, 5);
+		this.triThree = new Animation(this.triforceSprites, 5);
 
-		this.triforceOne = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(20, new AnimationPath(this.triOne, 0, Lttp.height, 1, -1, Lttp.width / 2 - (45 * Lttp.scale), Lttp.height / 2), 130));
-		this.triforceTwo = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(20, new AnimationPath(this.triTwo, Lttp.width, Lttp.height, -1, -1, Lttp.width / 2, Lttp.height / 2), 130));
-		this.triforceThree = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(20, new AnimationPath(this.triThree, Lttp.width / 2 - (45 / 2 * Lttp.scale), -(45 * Lttp.scale), 0, 1, Lttp.width / 2 - (45 / 2 * Lttp.scale), Lttp.height / 2 - (45 * Lttp.scale)), 130));
+		this.triforceOne = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(24, new AnimationPath(this.triOne, 0, Lttp.height, 1, -1, Lttp.width / 2 - (45 * Lttp.scale), Lttp.height / 2), 130));
+		this.triforceTwo = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(24, new AnimationPath(this.triTwo, Lttp.width - (45 * Lttp.scale), Lttp.height, -1, -1, Lttp.width / 2, Lttp.height / 2), 130));
+		this.triforceThree = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(24, new AnimationPath(this.triThree, Lttp.width / 2 - (45 / 2 * Lttp.scale), -(45 * Lttp.scale), 0, 1, Lttp.width / 2 - (45 / 2 * Lttp.scale), Lttp.height / 2 - (45 * Lttp.scale)), 130));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(15, Resources.sfx.get(Resources.rupee1), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(15, new ImageSchedule(Resources.nintendo, Lttp.width / 2 - (56 * Lttp.scale / 2), Lttp.height / 2 - (16 * Lttp.scale / 2), 56 * Lttp.scale, 16 * Lttp.scale), 35));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(40, new ImageSchedule(Resources.copyright, Lttp.width / 2 - (103 * Lttp.scale / 2), Lttp.height - 100, 103 * Lttp.scale, 8 * Lttp.scale), -1));
 
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(60, Resources.music.get(Resources.title), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(130, new ImageSchedule(Resources.background, Lttp.width / 2 - (256 * Lttp.scale / 2), Lttp.height / 2 - (144 * Lttp.scale / 2), 256 * Lttp.scale, 144 * Lttp.scale), -1));
-		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(111, new ImageSchedule(Resources.triforce, Lttp.width / 2 - (82 * Lttp.scale / 2), Lttp.height / 2 - (81 * Lttp.scale / 2), 82 * Lttp.scale, 81 * Lttp.scale), -1));
+		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(112, new ImageSchedule(Resources.triforce, Lttp.width / 2 - (82 * Lttp.scale / 2), Lttp.height / 2 - (81 * Lttp.scale / 2), 82 * Lttp.scale, 81 * Lttp.scale), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(140, new ImageSchedule(Resources.logo, Lttp.width / 2 - (174 * Lttp.scale / 2), Lttp.height / 2 - (128 * Lttp.scale / 2), 174 * Lttp.scale, 128 * Lttp.scale), -1));
-
 
 	}
 
@@ -71,15 +70,6 @@ public class Title extends State {
 		this.allowInput = true;
 
 		this.stateManager.scheduler.updateResources(count);
-
-		if (this.triOne.hasPlayedOnce() && this.triTwo.hasPlayedOnce() && this.triThree.hasPlayedOnce()) {
-			//this.stateManager.scheduler.removeResource(this.stateManager.scheduler.getResource(this.triforceOne));
-			//this.stateManager.scheduler.removeResource(this.stateManager.scheduler.getResource(this.triforceTwo));
-			//this.stateManager.scheduler.removeResource(this.stateManager.scheduler.getResource(this.triforceThree));
-			this.triOne.stop();
-			this.triTwo.stop();
-			this.triThree.stop();
-		}
 
 		if(count == 200) {
 			this.allowInput = true;
@@ -91,6 +81,7 @@ public class Title extends State {
 	public void draw(Graphics2D g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
+		System.out.println(count);
 
 		/*
 		g.setColor(Color.RED);
@@ -102,7 +93,7 @@ public class Title extends State {
 
 		if (this.stateManager.scheduler.hasSchedule(this.triforceOne) && this.stateManager.scheduler.hasSchedule(this.triforceTwo) && this.stateManager.scheduler.hasSchedule(this.triforceThree)) {
 			ResourceSchedule schedule = this.stateManager.scheduler.getResource(this.triforceOne);
-			if(schedule.getIntendedStart() <= count) {
+			if (schedule.getIntendedStart() <= count && count < 112) {
 				AnimationPath triOne = this.stateManager.scheduler.getResource(this.triforceOne).getAnimationPath();
 				AnimationPath triTwo = this.stateManager.scheduler.getResource(this.triforceTwo).getAnimationPath();
 				AnimationPath triThree = this.stateManager.scheduler.getResource(this.triforceThree).getAnimationPath();
@@ -110,6 +101,7 @@ public class Title extends State {
 				g.drawImage(triOne.getSprite(), triOne.getX(), triOne.getY(), 45 * Lttp.scale, 45 * Lttp.scale, null);
 				g.drawImage(triTwo.getSprite(), triTwo.getX(), triTwo.getY(), 45 * Lttp.scale, 45 * Lttp.scale, null);
 				g.drawImage(triThree.getSprite(), triThree.getX(), triThree.getY(), 45 * Lttp.scale, 45 * Lttp.scale, null);
+
 			}
 		}
 
