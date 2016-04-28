@@ -1,6 +1,5 @@
 package me.rockerjman222.Lttp.main;
 
-import me.rockerjman222.Lttp.assets.Resources;
 import me.rockerjman222.Lttp.state.StateManager;
 
 import javax.swing.*;
@@ -41,7 +40,7 @@ public class GameLoop extends JPanel implements Runnable, KeyListener {
 	}
 
 	public void init() {
-		this.image = new BufferedImage(Lttp.width, Lttp.height, BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(Lttp.width, Lttp.height, BufferedImage.TYPE_INT_ARGB);
 		this.graphics = (Graphics2D) this.image.getGraphics();
 		this.running = true;
 		this.stateManager = new StateManager();

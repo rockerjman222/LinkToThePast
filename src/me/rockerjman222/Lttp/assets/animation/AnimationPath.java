@@ -28,19 +28,31 @@ public class AnimationPath {
 	}
 
 	public void update(){
-
 		if(this.animation.hasStarted()){
 			this.animation.update();
 
 			this.workingX += this.motionX;
 			this.workingY += this.motionY;
 
-			if(this.workingX >= this.intendedX){
-				this.workingX = this.intendedX;
-			}
-			if(this.workingY >= this.intendedY){
-				this.workingY = this.intendedY;
-			}
+			if(this.motionX > 0)
+				if(this.workingX >= this.intendedX)
+					this.workingX = this.intendedX;
+			else if(this.motionX < 0)
+				if(this.workingX <= this.intendedX)
+					this.workingX = this.intendedX;
+
+			if(this.motionY > 0)
+				if(this.workingY >= this.intendedY)
+					this.workingY = this.intendedY;
+			else if(this.motionY < 0)
+				if(this.workingY <= this.intendedY)
+					this.workingY = this.intendedY;
+
+			if(this.workingX == this.intendedX)
+				this.motionX = 0;
+
+			if(this.workingY == this.intendedY)
+				this.motionY = 0;
 
 		}
 

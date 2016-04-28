@@ -59,6 +59,10 @@ public class AnimationScheduler {
 		return schedule.getIdentifier();
 	}
 
+	public void removeResource(ResourceSchedule schedule) {
+		this.scheduleList.remove(schedule.getIdentifier(), schedule);
+	}
+
 	public LinkedHashMap<UUID, ResourceSchedule> getScheduleList() {
 		return scheduleList;
 	}
