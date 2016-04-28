@@ -58,7 +58,7 @@ public class Title extends State {
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(15, new ImageSchedule(Resources.nintendo, Lttp.width / 2 - (56 * Lttp.scale / 2), Lttp.height / 2 - (16 * Lttp.scale / 2), 56 * Lttp.scale, 16 * Lttp.scale), 35));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(40, new ImageSchedule(Resources.copyright, Lttp.width / 2 - (103 * Lttp.scale / 2), Lttp.height - 100, 103 * Lttp.scale, 8 * Lttp.scale), -1));
 
-		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(60, Resources.sfx.get(Resources.title), -1));
+		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(60, Resources.music.get(Resources.title), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(130, new ImageSchedule(Resources.background, Lttp.width / 2 - (256 * Lttp.scale / 2), Lttp.height / 2 - (144 * Lttp.scale / 2), 256 * Lttp.scale, 144 * Lttp.scale), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(111, new ImageSchedule(Resources.triforce, Lttp.width / 2 - (82 * Lttp.scale / 2), Lttp.height / 2 - (81 * Lttp.scale / 2), 82 * Lttp.scale, 81 * Lttp.scale), -1));
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(140, new ImageSchedule(Resources.logo, Lttp.width / 2 - (174 * Lttp.scale / 2), Lttp.height / 2 - (128 * Lttp.scale / 2), 174 * Lttp.scale, 128 * Lttp.scale), -1));

@@ -1,7 +1,6 @@
 package me.rockerjman222.Lttp.main;
 
 import me.rockerjman222.Lttp.assets.Resources;
-import me.rockerjman222.Lttp.utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +12,6 @@ public class Lttp {
 	public static final int width = 256 * scale;
 
 	public static void main(String[] args) throws InterruptedException {
-		Utils.log("Starting...");
 		SwingUtilities.invokeLater(() -> {
 			JFrame frame = new JFrame("Link to the Past");
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -25,6 +23,8 @@ public class Lttp {
 			frame.pack();
 			frame.setVisible(true);
 		});
+
+		//Font.registerFonts();
 
 	}
 
