@@ -9,12 +9,24 @@ import java.util.UUID;
 
 public class ResourceSchedule {
 
+	private Graphics2D graphics2D = null;
+
 	private int intendedStart = -1;
 	private Audio audioClip = null;
 	private Animation animationPlay = null;
 	private AnimationPath animationPath = null;
 	private ImageSchedule imageSchedule = null;
 	private int intendedStop = -1;
+
+	/**
+	 * A Functional Interface that can be changed on the fly through the use of
+	 * Lambda expressions, for those problems that require just a TINY bit more code
+	 * that we haven't supplemented into the Schedule
+	 * <p>
+	 * At this point, the code will ALWAYS be run after everything else, we can tweak that in the future though
+	 */
+	private Runnable updateAdditional = null;
+	private Runnable drawerAdditional = null;
 
 	private boolean started = false;
 	private boolean finished = false;
@@ -74,7 +86,7 @@ public class ResourceSchedule {
 				this.animationPath.getAnimation().stop();
 				this.markFinished();
 			}
-			if(this.intendedStop <= systemTime && this.intendedStop != -1){
+			if (this.intendedStop <= systemTime && this.intendedStop != -1 && this.intendedStop != -2){
 				this.animationPath.getAnimation().stop();
 				this.markFinished();
 			}
@@ -85,6 +97,10 @@ public class ResourceSchedule {
 			this.markFinished();
 		}
 
+		//Run whatever Lambda code we've specified for update procedures
+		if (this.updateAdditional != null)
+			this.updateAdditional.run();
+
 	}
 
 	public void drawIntended(Graphics2D graphics){
@@ -93,9 +109,28 @@ public class ResourceSchedule {
 			this.imageSchedule.drawImage(graphics);
 		}
 
+
 	}
 
-	public UUID getIdentifier(){
+	public void drawAdditional(Graphics2D graphics) {
+		this.graphics2D = graphics;
+
+		//Draw anything else that we absolutely need at the same time and don't want to schedule
+		if (this.drawerAdditional != null)
+			this.drawerAdditional.run();
+
+		this.graphics2D = null;
+	}
+
+	public void setUpdateAdditional(Runnable updateAdditional) {
+		this.updateAdditional = updateAdditional;
+	}
+
+	public void setDrawerAdditional(Runnable drawerAdditional) {
+		this.drawerAdditional = drawerAdditional;
+	}
+
+	UUID getIdentifier(){
 		return this.identifier;
 	}
 
@@ -107,13 +142,25 @@ public class ResourceSchedule {
 		return this.animationPath;
 	}
 
+	public void setIntendedStart(int intendedStart) {
+		this.intendedStart = intendedStart;
+	}
+
+	public void setIntendedStop(int intendedStop) {
+		this.intendedStop = intendedStop;
+	}
+
 	public int getIntendedStart() {
 		return intendedStart;
 	}
 
-	void detectActivated(int programTime){
+	public int getIntendedStop() {
+		return intendedStop;
+	}
 
-		if(this.intendedStart <= programTime && !this.finished) {
+	void detectActivated(int programTime) {
+
+		if (this.intendedStart <= programTime && !this.finished && this.intendedStart > -1) {
 			this.started = true;
 
 			if(this.animationPlay != null){
@@ -127,7 +174,13 @@ public class ResourceSchedule {
 		}
 
 
+	}
 
+	/**
+	 * Special Accessor for the graphics, null most of the time
+	 */
+	public Graphics2D getGraphics() {
+		return this.graphics2D;
 	}
 
 	private void markFinished(){
@@ -137,5 +190,9 @@ public class ResourceSchedule {
 
 	boolean isFinished() {
 		return this.finished;
+	}
+
+	public boolean hasStarted() {
+		return this.started && !this.finished;
 	}
 }

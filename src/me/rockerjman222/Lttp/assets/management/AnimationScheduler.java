@@ -45,6 +45,8 @@ public class AnimationScheduler {
 			ResourceSchedule resource = entry.getValue();
 
 			if(resource.isFinished()){
+				//System.out.println("Started: " + resource.started);
+				//System.out.println("Finished: " + resource.finished);
 				this.scheduleList.remove(entry.getKey(), entry.getValue());
 				continue;
 			}
@@ -52,6 +54,22 @@ public class AnimationScheduler {
 			resource.drawIntended(graphics);
 
 		}
+	}
+
+	public void drawAdditionalResources(Graphics2D graphics) {
+		for (Map.Entry<UUID, ResourceSchedule> entry : new LinkedHashMap<>(this.scheduleList).entrySet()) {
+
+			ResourceSchedule resource = entry.getValue();
+
+			if (resource.isFinished()) {
+				this.scheduleList.remove(entry.getKey(), entry.getValue());
+				continue;
+			}
+
+			resource.drawAdditional(graphics);
+
+		}
+
 	}
 
 	public UUID scheduleResource(ResourceSchedule schedule){

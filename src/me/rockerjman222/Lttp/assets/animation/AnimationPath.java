@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Used to get an Animation to specified coordinates
- * */
+ */
 @SuppressWarnings("ALL")
 public class AnimationPath {
 
@@ -17,6 +17,9 @@ public class AnimationPath {
 
 	private Animation animation;
 
+	private DirectionMoved movementX;
+	private DirectionMoved movementY;
+
 	public AnimationPath(Animation animation, int startingX, int startingY, int motionX, int motionY, int intendedX, int intendedY) {
 		this.workingX = startingX;
 		this.workingY = startingY;
@@ -25,34 +28,39 @@ public class AnimationPath {
 		this.intendedX = intendedX;
 		this.intendedY = intendedY;
 		this.animation = animation;
+
+		this.movementX = (this.workingX > this.intendedX ? DirectionMoved.NEGATIVE : (this.workingX < this.intendedX ? DirectionMoved.POSITIVE : null));
+		this.movementY = (this.workingY > this.intendedY ? DirectionMoved.NEGATIVE : (this.workingY < this.intendedY ? DirectionMoved.POSITIVE : null));
 	}
 
-	public void update(){
-		if(this.animation.hasStarted()){
+	public void update() {
+
+		if (this.animation.hasStarted()) {
 			this.animation.update();
 
 			this.workingX += this.motionX;
 			this.workingY += this.motionY;
 
-			if(this.motionX > 0)
-				if(this.workingX >= this.intendedX)
+			if (this.movementX == DirectionMoved.POSITIVE)
+				if (this.workingX >= this.intendedX) {
 					this.workingX = this.intendedX;
-			else if(this.motionX < 0)
-				if(this.workingX <= this.intendedX)
-					this.workingX = this.intendedX;
+				} else {
+				}
+			else if (this.movementX == DirectionMoved.NEGATIVE)
+				if (this.workingX <= this.intendedX) {
+					this.workingX = intendedX;
+				}
 
-			if(this.motionY > 0)
-				if(this.workingY >= this.intendedY)
+			if (this.movementY == DirectionMoved.POSITIVE)
+				if (this.workingY >= this.intendedY) {
 					this.workingY = this.intendedY;
-			else if(this.motionY < 0)
-				if(this.workingY <= this.intendedY)
-					this.workingY = this.intendedY;
-
-			if(this.workingX == this.intendedX)
-				this.motionX = 0;
-
-			if(this.workingY == this.intendedY)
-				this.motionY = 0;
+				} else {
+				}
+			else if (this.movementY == DirectionMoved.NEGATIVE)
+				if (this.workingY <= this.intendedY) {
+					this.workingY = intendedY;
+				} else {
+				}
 
 		}
 
@@ -66,7 +74,7 @@ public class AnimationPath {
 		return workingY;
 	}
 
-	public void start(){
+	public void start() {
 
 		this.animation.start();
 
@@ -76,11 +84,16 @@ public class AnimationPath {
 		return animation;
 	}
 
-	public BufferedImage getSprite(){
+	public BufferedImage getSprite() {
 		return this.getAnimation().getSprite();
 	}
 
-	public BufferedImage getSprite(int index) {
-		return this.getAnimation().getSprite(index);
+
+	private enum DirectionMoved {
+
+		POSITIVE,
+		NEGATIVE
+
 	}
+
 }

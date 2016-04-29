@@ -5,7 +5,7 @@ import java.awt.*;
 
 public abstract class State {
 
-	protected Timer timer;
+	private Timer timer;
 	protected int count = 0;
 
 	protected StateManager stateManager;
@@ -26,5 +26,6 @@ public abstract class State {
 	public abstract void keyPressed(int k);
 
 	public abstract void keyReleased(int k);
+
 
 }
