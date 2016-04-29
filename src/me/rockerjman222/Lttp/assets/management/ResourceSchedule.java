@@ -33,7 +33,7 @@ public class ResourceSchedule {
 
 	private final UUID identifier;
 
-	public ResourceSchedule(int intendedStart, int intendedStop) {
+	private ResourceSchedule(int intendedStart, int intendedStop) {
 		this.intendedStart = intendedStart;
 		this.intendedStop = intendedStop;
 		this.identifier = UUID.randomUUID();
@@ -130,7 +130,7 @@ public class ResourceSchedule {
 		this.drawerAdditional = drawerAdditional;
 	}
 
-	UUID getIdentifier(){
+	public UUID getIdentifier() {
 		return this.identifier;
 	}
 
@@ -150,15 +150,11 @@ public class ResourceSchedule {
 		this.intendedStop = intendedStop;
 	}
 
-	public int getIntendedStart() {
-		return intendedStart;
-	}
-
-	public int getIntendedStop() {
-		return intendedStop;
-	}
 
 	void detectActivated(int programTime) {
+
+		if (this.intendedStart == -1)
+			return;
 
 		if (this.intendedStart <= programTime && !this.finished && this.intendedStart > -1) {
 			this.started = true;

@@ -45,8 +45,6 @@ public class AnimationScheduler {
 			ResourceSchedule resource = entry.getValue();
 
 			if(resource.isFinished()){
-				//System.out.println("Started: " + resource.started);
-				//System.out.println("Finished: " + resource.finished);
 				this.scheduleList.remove(entry.getKey(), entry.getValue());
 				continue;
 			}

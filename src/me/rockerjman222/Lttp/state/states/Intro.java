@@ -32,18 +32,32 @@ public class Intro extends State {
 	public void init() {
 		super.init();
 		this.stateManager.scheduler.scheduleResource(new ResourceSchedule(1, Resources.music.get(Resources.opening), -1));
-		this.introOne = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(-1,
+		this.introOne = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(1,
 				new ImageSchedule(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_ONE.getX(), EnumSprites.INTRO_SLIDE_ONE.getY(), EnumSprites.INTRO_SLIDE_ONE.getWidth(), EnumSprites.INTRO_SLIDE_ONE.getHeight()),
 						Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale / 2),
 						Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2) - 30 * Lttp.scale,
 						EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale,
 						EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale), -1));
-		this.introTwo = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(1,
+		this.introTwo = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(-1,
 				new ImageSchedule(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_TWO.getX(), EnumSprites.INTRO_SLIDE_TWO.getY(), EnumSprites.INTRO_SLIDE_TWO.getWidth(), EnumSprites.INTRO_SLIDE_TWO.getHeight()),
 						Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_TWO.getWidth() * Lttp.scale / 2),
 						Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2) - 30 * Lttp.scale,
 						EnumSprites.INTRO_SLIDE_TWO.getWidth() * Lttp.scale,
 						EnumSprites.INTRO_SLIDE_TWO.getHeight() * Lttp.scale), -1));
+		this.introThree = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(-1,
+				new ImageSchedule(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_THREE.getX(), EnumSprites.INTRO_SLIDE_THREE.getY(), EnumSprites.INTRO_SLIDE_THREE.getWidth(), EnumSprites.INTRO_SLIDE_THREE.getHeight()),
+						Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_THREE.getWidth() * Lttp.scale / 2),
+						Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2) - 30 * Lttp.scale,
+						EnumSprites.INTRO_SLIDE_THREE.getWidth() * Lttp.scale,
+						EnumSprites.INTRO_SLIDE_THREE.getHeight() * Lttp.scale), -1));
+		this.introFour = this.stateManager.scheduler.scheduleResource(new ResourceSchedule(-1,
+				new ImageSchedule(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_FOUR.getX(), EnumSprites.INTRO_SLIDE_FOUR.getY(), EnumSprites.INTRO_SLIDE_FOUR.getWidth(), EnumSprites.INTRO_SLIDE_FOUR.getHeight()),
+						Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getWidth() * Lttp.scale / 2),
+						Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2) - 30 * Lttp.scale,
+						EnumSprites.INTRO_SLIDE_FOUR.getWidth() * Lttp.scale,
+						EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale), -1));
+
+		this.currentSlide = this.introOne;
 
 	}
 
@@ -112,8 +126,7 @@ public class Intro extends State {
 				next = this.stateManager.scheduler.getResource(this.introOne);
 				if (next != null) {
 					current.setIntendedStop(this.count);
-					next.setIntendedStart(this.count);
-					this.currentSlide = this.introOne;
+
 				}
 			}
 		}
