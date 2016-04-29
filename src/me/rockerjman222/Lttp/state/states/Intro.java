@@ -79,7 +79,7 @@ public class Intro extends State {
 			}
 		}
 
-		g.setColor(new Color(0, 0, 0, 200));
+		g.setColor(new Color(0, 0, 0, 130));
 		g.fillRect(0, 0, Lttp.width, Lttp.height / 6);
 		g.fillRect(0, Lttp.height - (Lttp.height / 6), Lttp.width, Lttp.height / 6);
 		g.fillRect(0, Lttp.height / 6, Lttp.width / 8, Lttp.height - (Lttp.height / 6) * 2);

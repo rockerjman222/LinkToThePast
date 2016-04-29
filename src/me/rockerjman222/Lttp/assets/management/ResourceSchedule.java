@@ -179,7 +179,7 @@ public class ResourceSchedule {
 		return this.graphics2D;
 	}
 
-	private void markFinished(){
+	void markFinished() {
 		this.started = false;
 		this.finished = true;
 	}
