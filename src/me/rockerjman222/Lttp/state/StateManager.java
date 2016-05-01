@@ -15,7 +15,7 @@ public class StateManager {
 
 	public StateManager() {
 		this.states = new State[EnumStates.TOTAL_STATES.getState()];
-		this.currentState = EnumStates.TITLE.getState();
+		this.currentState = EnumStates.INTRO.getState();
 		loadState(this.currentState);
 	}
 

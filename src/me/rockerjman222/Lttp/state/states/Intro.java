@@ -1,5 +1,6 @@
 package me.rockerjman222.Lttp.state.states;
 
+import me.rockerjman222.Lttp.assets.BitmapFont;
 import me.rockerjman222.Lttp.assets.EnumSprites;
 import me.rockerjman222.Lttp.assets.Resources;
 import me.rockerjman222.Lttp.assets.management.ResourceSchedule;
@@ -61,6 +62,13 @@ public class Intro extends State {
 				EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale,
 				null
 		);
+
+		//g.drawImage(Resources.fontSheet, 20, 20, 24, 52, null);
+
+		//BitmapFont.draw(g, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 20, 100);
+		//BitmapFont.draw(g, "abcdefghijklmnopqrstuvwxyz", 20, 20);
+
+		BitmapFont.draw(g, "lmnopqr", 20, 180);
 
 
 
