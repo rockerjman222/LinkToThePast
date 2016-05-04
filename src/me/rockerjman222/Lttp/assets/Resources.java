@@ -24,12 +24,8 @@ public class Resources {
 	/** Window **/
 	public static final BufferedImage windowIcon = loadImage("/window/icon.png");
 
-	/**
-	 * Fonts
-	 **/
-	//public static final File returnOfGanonFontFile = loadFile("/fonts/ReturnofGanon.ttf");
-	public static Font defaultFont = null;
-	public static final BufferedImage text = loadImage("/fonts/font.png");
+	/** Fonts **/
+	public static final BufferedImage fontSheet = loadImage("/fonts/font.png");
 
 	/** Title **/
 	public static final BufferedImage nintendo = loadImage("/titleScreen/nintendo.png");
