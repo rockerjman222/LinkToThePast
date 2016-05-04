@@ -25,7 +25,6 @@ crash-reports/
 *.iml
 *.ipr
 *.iws
-*.idea
 *.lock
 *.zip
 *.classpath

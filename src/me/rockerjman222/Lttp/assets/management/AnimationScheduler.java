@@ -75,17 +75,6 @@ public class AnimationScheduler {
 		return schedule.getIdentifier();
 	}
 
-	/**
-	 * NO
-	 * YOU USE {@link ResourceSchedule#markFinished()} FOR THIS<p>
-	 * Also if you set a proper destroy time for the Resource when you make it
-	 * It will literally do your job for you
-	 */
-	@SuppressWarnings("unused")
-	public void removeResource(ResourceSchedule schedule) {
-		//this.scheduleList.remove(schedule.getIdentifier(), schedule);
-	}
-
 	public LinkedHashMap<UUID, ResourceSchedule> getScheduleList() {
 		return scheduleList;
 	}
