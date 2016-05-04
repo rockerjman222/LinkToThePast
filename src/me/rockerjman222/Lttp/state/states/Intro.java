@@ -1,5 +1,6 @@
 package me.rockerjman222.Lttp.state.states;
 
+import me.rockerjman222.Lttp.assets.BitmapFont;
 import me.rockerjman222.Lttp.assets.EnumSprites;
 import me.rockerjman222.Lttp.assets.Resources;
 import me.rockerjman222.Lttp.assets.management.ImageSchedule;
@@ -59,18 +60,22 @@ public class Intro extends State {
 
 		this.currentSlide = this.introOne;
 
+
 	}
 
 	@Override
 	public void update() {
 
-		this.stateManager.scheduler.updateResources(this.count);
+		this.stateManager.scheduler.updateResources(count);
+
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
+
+		this.stateManager.scheduler.drawResources(g);
 
 		for(int x = 0; x < 500; x++) {
 			for(int y = 0; y < 500; y++) {
@@ -88,9 +93,20 @@ public class Intro extends State {
 		g.setColor(new Color(0, 0, 0, 200));
 		g.fillRect(Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale / 2) + 5 * Lttp.scale, Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale / 2) - 25 * Lttp.scale, EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale, EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale);
 
-		this.stateManager.scheduler.drawResources(g);
+		g.drawImage(Resources.introSlides.getSubimage(EnumSprites.INTRO_SLIDE_ONE.getX(), EnumSprites.INTRO_SLIDE_ONE.getY(), EnumSprites.INTRO_SLIDE_ONE.getWidth(), EnumSprites.INTRO_SLIDE_ONE.getHeight()),
+				Lttp.width / 2 - (EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale / 2),
+				Lttp.height / 2 - (EnumSprites.INTRO_SLIDE_FOUR.getHeight() * Lttp.scale / 2) - 30 * Lttp.scale,
+				EnumSprites.INTRO_SLIDE_ONE.getWidth() * Lttp.scale,
+				EnumSprites.INTRO_SLIDE_ONE.getHeight() * Lttp.scale,
+				null
+		);
 
-		this.stateManager.scheduler.drawAdditionalResources(g);
+		//g.drawImage(Resources.fontSheet, 20, 20, 24, 52, null);
+
+		//BitmapFont.draw(g, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 20, 100);
+		//BitmapFont.draw(g, "abcdefghijklmnopqrstuvwxyz", 20, 20);
+
+		BitmapFont.draw(g, "lmnopqr", 20, 180);
 
 	}
 
@@ -130,6 +146,7 @@ public class Intro extends State {
 				}
 			}
 		}
+
 
 	}
 
