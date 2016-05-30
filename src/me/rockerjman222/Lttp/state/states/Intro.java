@@ -80,7 +80,7 @@ public class Intro extends State {
 		for(int x = 0; x < 500; x++) {
 			for(int y = 0; y < 500; y++) {
 				g.drawImage(Resources.backgroundOne, x * (16 * Lttp.scale), y * (16 * Lttp.scale), 16 * Lttp.scale, 16 * Lttp.scale, null);
-				//g.drawImage(Resources.backgroundTwo, x * (15 * Lttp.scale), y * (15 * Lttp.scale), 15 * Lttp.scale, 15 * Lttp.scale, null);
+				g.drawImage(Resources.backgroundTwo, x * (15 * Lttp.scale), y * (15 * Lttp.scale), 15 * Lttp.scale, 15 * Lttp.scale, null);
 			}
 		}
 
@@ -106,7 +106,7 @@ public class Intro extends State {
 		//BitmapFont.draw(g, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 20, 100);
 		//BitmapFont.draw(g, "abcdefghijklmnopqrstuvwxyz", 20, 20);
 
-		BitmapFont.draw(g, "lmnopqr", 20, 180);
+		BitmapFont.draw(g, "This is me testing the font! *", 20, 180);
 
 	}
 

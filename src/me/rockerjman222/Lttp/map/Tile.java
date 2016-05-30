@@ -53,5 +53,5 @@ public class Tile {
 	public BufferedImage getTile() {
 		return this.tile;
 	}
-	
+
 }

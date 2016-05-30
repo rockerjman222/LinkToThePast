@@ -42,6 +42,7 @@ public class Resources {
 	public static final BufferedImage backgroundTwo = loadImage("/intro/bg_2.png");
 
 	/** Maps **/
+	public static final File test = loadFile("/maps/test.tmx");
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
 
 	/** TileSets **/

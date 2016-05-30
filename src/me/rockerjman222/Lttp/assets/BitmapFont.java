@@ -114,8 +114,6 @@ public class BitmapFont {
 
 			BufferedImage image;
 
-			System.out.println(letter);
-
 			switch (letter) {
 				case 0:
 					image = A;

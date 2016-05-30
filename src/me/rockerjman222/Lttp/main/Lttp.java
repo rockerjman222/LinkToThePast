@@ -1,6 +1,7 @@
 package me.rockerjman222.Lttp.main;
 
 import me.rockerjman222.Lttp.assets.Resources;
+import me.rockerjman222.Lttp.map.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +25,8 @@ public class Lttp {
 			frame.setVisible(true);
 		});
 
-		//Font.registerFonts();
+		Map map = new Map();
+		map.loadMap(Resources.test);
 
 	}
 
