@@ -3,7 +3,6 @@ package me.rockerjman222.Lttp.assets;
 import me.rockerjman222.Lttp.main.Lttp;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -46,10 +45,17 @@ public class Resources {
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
 
 	/** TileSets **/
-	//public static final BufferedImage overworldTileSet = loadImage("/tileSets/overworldTileSet.png");
+	public static final BufferedImage overworldTileSet = loadImage("/tileSets/overworldTileSet.png");
 	//public static final BufferedImage interiorTileSet = loadImage("/tileSets/interiorTileSet.png");
 
+	/** TileSheets **/
+	public static final BufferedImage[] overworldTileSheet = getSheet(overworldTileSet, 16);
+
 	/** Sprites **/
+
+	/** Tiles **/
+	public static final BufferedImage grass01 = overworldTileSheet[0];
+
 
 	/** Music **/
 	public static final File bossBackground = loadFile("/audio/music/Boss_Background.wav");
@@ -278,6 +284,21 @@ public class Resources {
 
 	private static File loadFile(String s) {
 		return new File(Lttp.class.getResource(s).getFile());
+	}
+
+	private static BufferedImage[] getSheet(BufferedImage image, int tileSize) {
+		int rows = image.getHeight() / tileSize;
+		int cols = image.getWidth() / tileSize;
+		BufferedImage[] sprites = new BufferedImage[rows * cols];
+
+		for(int x = 0; x < rows; x++) {
+			for(int y = 0; y < cols; y++) {
+				sprites[(y * rows) + x] = image.getSubimage(x * tileSize, y * tileSize, tileSize, tileSize);
+			}
+		}
+
+		return sprites;
+
 	}
 
 }
