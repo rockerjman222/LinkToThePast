@@ -46,16 +46,19 @@ public class Resources {
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
 
 	/** TileSets **/
-	public static final BufferedImage overworldTileSet = loadImage("/tileSets/overworldTileSet.png");
+	public static final BufferedImage overworldTiles = loadImage("/tileSets/overworldTileSet.png");
 	//public static final BufferedImage interiorTileSet = loadImage("/tileSets/interiorTileSet.png");
 
 	/** TileSheets **/
-	public static final BufferedImage[] overworldTileSheet = getSheet(overworldTileSet, 16);
+	public static final BufferedImage[] overworldTileSet = getSheet(overworldTiles, 16);
 
 	/** Sprites **/
 
 	/** Tiles **/
-	public static final BufferedImage grass01 = overworldTileSheet[0];
+	public static final BufferedImage grass01 = overworldTileSet[0];
+	public static final BufferedImage path01 = overworldTileSet[1];
+	public static final BufferedImage bush01 = overworldTileSet[100];
+	public static final BufferedImage flower01 = overworldTileSet[101];
 
 
 	/** Music **/

@@ -1,7 +1,6 @@
 package me.rockerjman222.Lttp.main;
 
 import me.rockerjman222.Lttp.assets.Resources;
-import me.rockerjman222.Lttp.map.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,9 +23,6 @@ public class Lttp {
 			frame.pack();
 			frame.setVisible(true);
 		});
-
-		Map map = new Map();
-		map.loadMap(Resources.test);
 
 	}
 
