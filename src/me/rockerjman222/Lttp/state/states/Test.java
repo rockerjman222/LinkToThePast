@@ -31,7 +31,7 @@ public class Test extends State {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
 
-		this.map.drawMap(g);
+		this.map.drawMap(g, new Point(0, 0));
 
 
 		//g.drawImage(Resources.bush01, 100, 100, 96, 96, null);
