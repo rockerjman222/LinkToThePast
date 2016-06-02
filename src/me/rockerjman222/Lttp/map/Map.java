@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Map {
 
@@ -56,6 +57,11 @@ public class Map {
 			this.tileWidth = Integer.parseInt(eTileSets.getAttribute("tilewidth")) * Lttp.scale;
 			this.tileHeight = Integer.parseInt(eTileSets.getAttribute("tileheight")) * Lttp.scale;
 
+			System.out.println("Map Width  : " + this.mapWidth);
+			System.out.println("Map Height : " + this.mapHeight);
+			System.out.println("Tile Width : " + this.tileWidth);
+			System.out.println("Tile Height: " + this.tileHeight);
+			System.out.println("Total Tiles: " + this.tiles.size());
 
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
@@ -64,32 +70,28 @@ public class Map {
 
 	public void drawMap(Graphics2D g) {
 		BufferedImage tile = null;
-		for(int i = 0; i < this.tiles.size(); i++) {
-			switch(this.tiles.get(i)) {
+
+		int y = 0;
+		int x = 0;
+		for(Iterator<java.util.Map.Entry<Integer, Integer>> i = this.tiles.entrySet().iterator(); i.hasNext(); ){
+			java.util.Map.Entry<Integer, Integer> mapEntry = i.next();
+
+			//TODO: Fix this to work with all tilesets.
+			switch(mapEntry.getValue()) {
 				case 1:
 					tile = Resources.grass01;
 					break;
-				case 2:
-					tile = Resources.path01;
-					break;
-				case 101:
-					tile = Resources.bush01;
-					break;
-				case 102:
-					tile = Resources.flower01;
-					break;
 
 			}
 
-			for(int x = 0; x <= Lttp.width / this.tileWidth; x++) {
-				for(int y = 0; y < Lttp.height / this.tileHeight; y++) {
-					g.drawImage(tile, this.tileWidth , this.tileHeight, this.tileWidth, this.tileHeight, null);
-				}
+			g.drawImage(tile, x * this.tileWidth, y * this.tileHeight, this.tileWidth, this.tileHeight, null);
+			if(++x >= 16){
+				y++;
+				x = 0;
 			}
-
-
-			//g.drawImage(tile, i * (this.tileWidth * Lttp.scale), i * (this.tileHeight * Lttp.scale), this.tileWidth * Lttp.scale, this.tileHeight * Lttp.scale, null);
 		}
+
 	}
+
 
 }

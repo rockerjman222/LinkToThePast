@@ -56,9 +56,6 @@ public class Resources {
 
 	/** Tiles **/
 	public static final BufferedImage grass01 = overworldTileSet[0];
-	public static final BufferedImage path01 = overworldTileSet[1];
-	public static final BufferedImage bush01 = overworldTileSet[100];
-	public static final BufferedImage flower01 = overworldTileSet[101];
 
 
 	/** Music **/

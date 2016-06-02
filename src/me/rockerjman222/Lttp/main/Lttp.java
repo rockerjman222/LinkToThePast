@@ -20,6 +20,7 @@ public class Lttp {
 			frame.setSize(new Dimension(width, height));
 			frame.setBackground(Color.BLACK);
 			frame.setResizable(false);
+			//frame.setLocation(1920 + 50, 200);
 			frame.pack();
 			frame.setVisible(true);
 		});
