@@ -38,14 +38,14 @@ public class Title extends State {
 			this.triforceSprites[x] = image[x];
 		}
 
-		final ResourceSchedule triOneTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), 0, Lttp.height, 1, -1, Lttp.width / 2 - (45 * Lttp.scale), Lttp.height / 2), 112);
+		final ResourceSchedule triOneTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), 0, Lttp.height, 1, -1, Lttp.width / 2 - (45 * Lttp.scale), Lttp.height / 2), 111);
 		triOneTemp.setDrawerAdditional(() -> {
 			if (triOneTemp.hasStarted()) {
 				AnimationPath triOne = triOneTemp.getAnimationPath();
 				triOneTemp.getGraphics().drawImage(triOne.getSprite(), triOne.getX(), triOne.getY(), 45 * Lttp.scale, 45 * Lttp.scale, null);
 			}
 		});
-		final ResourceSchedule triTwoTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), Lttp.width - (45 * Lttp.scale), Lttp.height, -1, -1, Lttp.width / 2, Lttp.height / 2), 112);
+		final ResourceSchedule triTwoTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), Lttp.width - (45 * Lttp.scale), Lttp.height, -1, -1, Lttp.width / 2, Lttp.height / 2), 111);
 		triTwoTemp.setDrawerAdditional(() -> {
 			if (triTwoTemp.hasStarted()) {
 				AnimationPath triTwo = triTwoTemp.getAnimationPath();
@@ -53,7 +53,7 @@ public class Title extends State {
 			}
 
 		});
-		final ResourceSchedule triThreeTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), Lttp.width / 2 - (45 / 2 * Lttp.scale), -(45 * Lttp.scale), 0, 1, Lttp.width / 2 - (45 / 2 * Lttp.scale), Lttp.height / 2 - (45 * Lttp.scale)), 112);
+		final ResourceSchedule triThreeTemp = new ResourceSchedule(24, new AnimationPath(new Animation(this.triforceSprites, 5), Lttp.width / 2 - (45 / 2 * Lttp.scale), -(45 * Lttp.scale), 0, 1, Lttp.width / 2 - (45 / 2 * Lttp.scale), Lttp.height / 2 - (45 * Lttp.scale)), 111);
 		triThreeTemp.setDrawerAdditional(() -> {
 			if (triThreeTemp.hasStarted()) {
 				AnimationPath triThree = triThreeTemp.getAnimationPath();
