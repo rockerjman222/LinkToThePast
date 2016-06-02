@@ -52,7 +52,7 @@ public class Map {
 				Node tile = dataNodes.item(i);
 				if(tile.getNodeType() == Node.ELEMENT_NODE) {
 					Element eTile = (Element) tile;
-					this.tileSet.add(Integer.parseInt(eTile.getAttribute("grid")));
+					this.tileSet.add(Integer.parseInt(eTile.getAttribute("gid")));
 				}
 			}
 
@@ -119,8 +119,9 @@ public class Map {
 				double attemptedX = (width * this.tileWidth * Lttp.scale) - playerCenter.getX();
 				double attemptedY = (height * this.tileHeight * Lttp.scale) - playerCenter.getY();
 
-				if (Math.abs(attemptedX) > 16 || Math.abs(attemptedY) > 16)
-					continue;
+				//this is wrong, I'll fix it later
+				//if (Math.abs(attemptedX) > 16 || Math.abs(attemptedY) > 16)
+				//continue;
 
 				if (this.isOnScreen(new Rectangle2D.Double(attemptedX, attemptedY, this.tileWidth, this.tileHeight))) {
 

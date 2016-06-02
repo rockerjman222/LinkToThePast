@@ -52,16 +52,16 @@ public class Test extends State {
 
 		switch (k) {
 			case KeyEvent.VK_UP:
-				testingPoint.translate(0, -2);
-				break;
-			case KeyEvent.VK_DOWN:
 				testingPoint.translate(0, 2);
 				break;
+			case KeyEvent.VK_DOWN:
+				testingPoint.translate(0, -2);
+				break;
 			case KeyEvent.VK_LEFT:
-				testingPoint.translate(-2, 0);
+				testingPoint.translate(2, 0);
 				break;
 			case KeyEvent.VK_RIGHT:
-				testingPoint.translate(2, 0);
+				testingPoint.translate(-2, 0);
 				break;
 		}
 
