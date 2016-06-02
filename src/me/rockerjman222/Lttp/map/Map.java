@@ -123,8 +123,8 @@ public class Map {
 
 				}
 
-				double attemptedX = (width * this.tileWidth * Lttp.scale) - playerCenter.getX();
-				double attemptedY = (height * this.tileHeight * Lttp.scale) - playerCenter.getY();
+				double attemptedX = (width * this.tileWidth) - playerCenter.getX();
+				double attemptedY = (height * this.tileHeight) - playerCenter.getY();
 
 				//this is wrong, I'll fix it later
 				//if (Math.abs(attemptedX) > 16 || Math.abs(attemptedY) > 16)

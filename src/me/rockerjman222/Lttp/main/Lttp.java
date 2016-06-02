@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Lttp {
 
-	public static final int scale = 4;
+	public static final int scale = 3;
 	public static final int height = 224 * scale;
 	public static final int width = 256 * scale;
 

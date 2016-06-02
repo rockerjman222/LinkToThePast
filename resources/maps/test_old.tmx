@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="2" height="2" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="overworldTileSet" tilewidth="16" tileheight="16" tilecount="10000" columns="100">
+  <image source="../tileSets/overworldTileSet.png" width="1600" height="1600"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="2" height="2">
+  <data>
+   <tile gid="1"/>
+   <tile gid="2"/>
+   <tile gid="101"/>
+   <tile gid="102"/>
+  </data>
+ </layer>
+</map>
