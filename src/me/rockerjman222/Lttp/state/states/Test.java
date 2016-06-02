@@ -7,12 +7,14 @@ import me.rockerjman222.Lttp.state.State;
 import me.rockerjman222.Lttp.state.StateManager;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Test extends State {
 
 	private StateManager stateManager;
 
 	private Map map;
+	Point testingPoint = new Point(0, 0);
 
 	public Test(StateManager stateManager) {
 		this.stateManager = stateManager;
@@ -31,7 +33,7 @@ public class Test extends State {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Lttp.width, Lttp.height);
 
-		this.map.drawMap(g, new Point(0, 0));
+		this.map.drawMap(g, testingPoint);
 
 
 		//g.drawImage(Resources.bush01, 100, 100, 96, 96, null);
@@ -47,6 +49,21 @@ public class Test extends State {
 
 	@Override
 	public void keyPressed(int k) {
+
+		switch (k) {
+			case KeyEvent.VK_UP:
+				testingPoint.translate(0, -2);
+				break;
+			case KeyEvent.VK_DOWN:
+				testingPoint.translate(0, 2);
+				break;
+			case KeyEvent.VK_LEFT:
+				testingPoint.translate(-2, 0);
+				break;
+			case KeyEvent.VK_RIGHT:
+				testingPoint.translate(2, 0);
+				break;
+		}
 
 	}
 
