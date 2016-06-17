@@ -46,16 +46,27 @@ public class Resources {
 	//public static final File linksHouse = loadFile("/maps/linksHouse.tmx");
 
 	/** TileSets **/
-	public static final BufferedImage overworldTiles = loadImage("/tileSets/overworldTileSet.png");
+	public static final BufferedImage tiles = loadImage("/tileSets/overworldTileSet.png");
 	//public static final BufferedImage interiorTileSet = loadImage("/tileSets/interiorTileSet.png");
 
 	/** TileSheets **/
-	public static final BufferedImage[] overworldTileSet = getSheet(overworldTiles, 16);
+	public static final BufferedImage[] overworldTileSet = getSheet(tiles, 16);
 
 	/** Sprites **/
 
 	/** Tiles **/
 	public static final BufferedImage grass01 = overworldTileSet[0];
+	public static final BufferedImage grass02 = overworldTileSet[1];
+	public static final BufferedImage grass03 = overworldTileSet[2];
+	public static final BufferedImage grass04 = overworldTileSet[3];
+	public static final BufferedImage grass05 = overworldTileSet[4];
+	public static final BufferedImage grassHill01 = overworldTileSet[5];
+	public static final BufferedImage grassHill02 = overworldTileSet[6];
+	public static final BufferedImage grassHill03 = overworldTileSet[7];
+	public static final BufferedImage grassHill04 = overworldTileSet[8];
+	public static final BufferedImage grassHill05 = overworldTileSet[9];
+	public static final BufferedImage grassHill06 = overworldTileSet[10];
+
 
 
 	/** Music **/
@@ -80,7 +91,7 @@ public class Resources {
 	public static final File kakarikoSoldiers = loadFile("/audio/music/Soldiers_Of_Kakariko.wav");
 	public static final File masterSwordDemo = loadFile("/audio/music/Master_Sword_Demo.wav");
 	public static final File opening = loadFile("/audio/music/Opening.wav");
-	public static final File overworld = loadFile("/audio/music/Overworld.wav");
+	//public static final File overworld = loadFile("/audio/music/Overworld.wav");
 	public static final File priest = loadFile("/audio/music/Priest.wav");
 	public static final File priestTransform = loadFile("/audio/music/Priest_Transformation.wav");
 	public static final File rabbitTransform = loadFile("/audio/music/Rabbit_Transformation.wav");
@@ -237,7 +248,7 @@ public class Resources {
 		music.put(kakarikoSoldiers, new Audio(kakarikoSoldiers));
 		music.put(masterSwordDemo, new Audio(masterSwordDemo));
 		music.put(opening, new Audio(opening));
-		music.put(overworld, new Audio(overworld));
+		//music.put(overworld, new Audio(overworld));
 		music.put(priest, new Audio(priest));
 		music.put(priestTransform, new Audio(priestTransform));
 		music.put(rabbitTransform, new Audio(rabbitTransform));

@@ -12,12 +12,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -76,7 +74,7 @@ public class Map {
 		int counterX = 0;
 		int counterY = 0;
 		for (Integer i : this.tileSet) {
-			tileArray[counterY][counterX] = i;
+			this.tileArray[counterY][counterX] = i;
 			if (++counterX >= this.mapWidth) {
 				counterX = 0;
 				counterY++;
@@ -84,6 +82,40 @@ public class Map {
 		}
 
 	}
+
+	public void drawMap(Graphics2D g, float xOffset, float yOffset) {
+		BufferedImage tile = null;
+
+		for (int height = 0; height < this.tileArray.length; height++) {
+			int[] row = this.tileArray[height];
+			for (int width = 0; width < row.length; width++) {
+
+				switch (row[width]) {
+					case 1:
+						tile = Resources.grass01;
+						break;
+					case 2:
+						tile = Resources.grass02;
+						break;
+					case 101:
+						tile = Resources.grass03;
+						break;
+					case 102:
+						tile = Resources.grass04;
+						break;
+
+				}
+
+				//if (this.isOnScreen(new Rectangle2D.Double(attemptedX, attemptedY, this.tileWidth, this.tileHeight))) {
+
+					g.drawImage(tile, (int) ((width * this.tileWidth) - xOffset), (int) ((height * this.tileHeight) - yOffset), this.tileWidth, this.tileHeight, null);
+				//}
+			}
+
+		}
+	}
+
+	/*
 
 	public void drawMap(Graphics2D g, Point playerCenter) {
 
@@ -97,7 +129,7 @@ public class Map {
 
 		This is just the starting point and a more efficient algorithm can be developed off of this
 
-		 */
+
 		//JOSH DON'T TOUCH PLX
 		//unless you finish enumerating all the tiles
 		//then touch
@@ -138,6 +170,8 @@ public class Map {
 
 		}
 	}
+
+	*/
 
 	private boolean isOnScreen(Rectangle.Double rectangle) {
 		return rectangle.intersects(new Rectangle(0, 0, Lttp.width, Lttp.height));
